@@ -2,3 +2,4 @@
 __pycache__/
 workout_tracker_venv
 /backend/.env
+backend/alembic/versions
