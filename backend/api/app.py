@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dependency_injector.wiring import inject, Provide
 from dependency_injector import containers, providers
 from core.config import Config
-from .routes import  health, user,auth
+from .routes import  health, user,auth, exercise
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
@@ -53,6 +53,7 @@ def init(config_file: str = os.getenv("CONFIG_FILE", ".env")) -> FastAPI:
     v1 = APIRouter(prefix="/api/v1")
     v1.include_router(health.router)
     v1.include_router(auth.router)
+    v1.include_router(exercise.router)
 
     # register the v1 router
     app.include_router(v1)
